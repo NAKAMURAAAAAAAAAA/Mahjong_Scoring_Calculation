@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点数計算サイト</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="score-info">
+                <span class="points">20 符</span>
+                <span class="multiplier">0 翻</span>
+                <button class="clear">クリア</button>
+            </div>
+            <div class="result">
+                <span class="score">親: 0 点</span>
+                <span class="score">子: 0 点</span>
+            </div>
+        </div>
+        <div class="tabs">
+            <button class="tab active" data-tab="han">翻</button>
+            <button class="tab" data-tab="fu">符</button>
+        </div>
+        <div class="tab-content">
+            <div id="han" class="tab-pane active">
+                <h1>翻数</h1>
+                <h2>1翻役</h2>
+                <div class="yaku-list">
+                    <button class="one-han" data-han="1">立直</button>
+                    <button class="one-han" data-han="1">一発</button>
+                    <button class="one-han" data-han="1">門前清自摸和</button>
+                    <button class="one-han" data-han="1">白</button>
+                    <button class="one-han" data-han="1">發</button>
+                    <button class="one-han" data-han="1">中</button>
+                    <button class="one-han" data-han="1">自風牌</button>
+                    <button class="one-han" data-han="1">場風牌</button>
+                    <button class="one-han" data-han="1">断么九</button>
+                    <button class="one-han" data-han="1">平和</button>
+                    <button class="one-han" data-han="1">一盃口</button>
+                    <button class="one-han" data-han="1">海底撈月</button>
+                    <button class="one-han" data-han="1">河底撈魚</button>
+                    <button class="one-han" data-han="1">嶺上開花</button>
+                    <button class="one-han" data-han="1">槍槓</button>
+                    <button class="one-han" data-han="1">ドラ</button>
+                </div>
+                <h2>2翻役</h2>
+                <div class="yaku-list">
+                    <button class="two-han" data-han="2">ダブル立直</button>
+                    <button class="two-han" data-han="2">三色同順</button>
+                    <button class="two-han" data-han="2">三色同刻</button>
+                    <button class="two-han" data-han="2">三暗刻</button>
+                    <button class="two-han" data-han="2">一気通貫</button>
+                    <button class="two-han" data-han="2">七対子</button>
+                    <button class="two-han" data-han="2">対々和</button>
+                    <button class="two-han" data-han="2">混全帯么九</button>
+                    <button class="two-han" data-han="2">三槓子</button>
+                    <button class="two-han" data-han="2">小三元</button>
+                    <button class="two-han" data-han="2">混老頭</button>
+                </div>
+                <h2>3翻役</h2>
+                <div class="yaku-list">
+                    <button class="three-han" data-han="3">二盃口</button>
+                    <button class="three-han" data-han="3">純全帯公九</button>
+                    <button class="three-han" data-han="3">混一色</button>
+                </div>
+                <h2>6翻役</h2>
+                <div class="yaku-list">
+                    <button class="six-han" data-han="6">清一色</button>
+                </div>
+                <h2>役満</h2>
+                <div class="yaku-list">
+                    <button class="yakuman" data-han="13">天和</button>
+                    <button class="yakuman" data-han="13">地和</button>
+                    <button class="yakuman" data-han="13">人和</button>
+                    <button class="yakuman" data-han="13">四暗刻</button>
+                    <button class="yakuman" data-han="13">国士無双</button>
+                    <button class="yakuman" data-han="13">九蓮宝燈</button>
+                    <button class="yakuman" data-han="13">大三元</button>
+                    <button class="yakuman" data-han="13">緑一色</button>
+                    <button class="yakuman" data-han="13">字一色</button>
+                    <button class="yakuman" data-han="13">清老頭</button>
+                    <button class="yakuman" data-han="13">四槓子</button>
+                    <button class="yakuman" data-han="13">小四喜</button>
+                </div>
+                <h2>ダブル役満</h2>
+                <div class="yaku-list">
+                    <button class="double-yakuman" data-han="26">四暗刻単騎</button>
+                    <button class="double-yakuman" data-han="26">大四喜</button>
+                    <button class="double-yakuman" data-han="26">純正九蓮宝燈</button>
+                    <button class="double-yakuman" data-han="26">国士無双十三面待ち</button>
+                </div>
+            </div>
+            <div id="fu" class="tab-pane">
+                <h1>符</h1>
+                <h2>アガり方</h2>
+                <div class="fu-list">
+                    <button class="agari" data-fu="10">メンゼンロン</button>
+                    <button class="agari" data-fu="2">ツモ</button>
+                </div>
+                <h2>面子</h2>
+                <h3>2-8刻子</h3>
+                <div class="fu-list">
+                    <button class="mentsu" data-fu="2">明刻×1</button>
+                    <button class="mentsu" data-fu="4">明刻×2</button>
+                    <button class="mentsu" data-fu="6">明刻×3</button>
+                    <button class="mentsu" data-fu="8">明刻×4</button>
+                    <button class="mentsu" data-fu="4">暗刻×1</button>
+                    <button class="mentsu" data-fu="8">暗刻×2</button>
+                    <button class="mentsu" data-fu="12">暗刻×3</button>
+                    <button class="mentsu" data-fu="16">暗刻×4</button>
+                    <button class="mentsu" data-fu="8">明槓×1</button>
+                    <button class="mentsu" data-fu="16">明槓×2</button>
+                    <button class="mentsu" data-fu="24">明槓×3</button>
+                    <button class="mentsu" data-fu="32">明槓×4</button>
+                    <button class="mentsu" data-fu="16">暗槓×1</button>
+                    <button class="mentsu" data-fu="32">暗槓×2</button>
+                    <button class="mentsu" data-fu="48">暗槓×3</button>
+                    <button class="mentsu" data-fu="64">暗槓×4</button>
+                </div>
+                <h3>1,9,字牌刻子</h3>
+                <div class="fu-list">
+                    <button class="mentsu" data-fu="4">明刻×1</button>
+                    <button class="mentsu" data-fu="8">明刻×2</button>
+                    <button class="mentsu" data-fu="12">明刻×3</button>
+                    <button class="mentsu" data-fu="16">明刻×4</button>
+                    <button class="mentsu" data-fu="8">暗刻×1</button>
+                    <button class="mentsu" data-fu="16">暗刻×2</button>
+                    <button class="mentsu" data-fu="24">暗刻×3</button>
+                    <button class="mentsu" data-fu="32">暗刻×4</button>
+                    <button class="mentsu" data-fu="16">明槓×1</button>
+                    <button class="mentsu" data-fu="32">明槓×2</button>
+                    <button class="mentsu" data-fu="48">明槓×3</button>
+                    <button class="mentsu" data-fu="64">明槓×4</button>
+                    <button class="mentsu" data-fu="32">暗槓×1</button>
+                    <button class="mentsu" data-fu="64">暗槓×2</button>
+                    <button class="mentsu" data-fu="96">暗槓×3</button>
+                    <button class="mentsu" data-fu="128">暗槓×4</button>
+                </div>
+                <h2>雀頭</h2>
+                <div class="fu-list">
+                    <button class="janto" data-fu="2">役牌</button>
+                </div>
+                <h2>待ち形</h2>
+                <div class="fu-list">
+                    <button class="machigata" data-fu="2">ペンチャン</button>
+                    <button class="machigata" data-fu="2">カンチャン</button>
+                    <button class="machigata" data-fu="2">タンキ</button>
+                    <button class="machigata" data-fu="0">ノベタン</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
