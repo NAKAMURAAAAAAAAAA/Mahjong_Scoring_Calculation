@@ -25,6 +25,9 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 .points, .multiplier {
@@ -63,7 +66,8 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 .tab {
@@ -172,16 +176,21 @@ body {
         align-items: flex-start;
     }
 
-    .tabs {
-        flex-direction: column;
+    .score-info {
+        position: static;
+        width: 100%;
+        justify-content: flex-end;
+        margin-bottom: 10px;
     }
 
-    .tab {
-        margin-bottom: 5px;
+    .score-info div {
+        margin-left: auto;
     }
 
     .score-info {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
     }
 
     .buttons {
