@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.score-info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.points, .multiplier {
+    font-size: 18px;
+    color: #000;
+}
+
+.clear {
+    background-color: #808080;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.clear:hover {
+    background-color: #666666;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.result {
+    text-align: center;
+}
+
+.result span {
+    display: block;
+    font-size: 20px;
+    margin: 5px 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: background-color 0.3s, border-bottom 0.3s;
+    text-align: center;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid #28a745;
+}
+
+.tab-content {
+    display: block;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.yaku, .fu {
+    margin-top: 20px;
+}
+
+.yaku h1, .fu h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.yaku h2, .fu h2, .fu h3 {
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.yaku h4, .fu h4 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.yaku-list, .fu-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.yaku-list button, .fu-list button {
+    background-color: #fff;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 10px;
+    color: #28a745;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.yaku-list button.active, .fu-list button.active {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons button {
+    background-color: #fff;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 10px;
+    color: #28a745;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        margin-bottom: 5px;
+    }
+
+    .score-info {
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .buttons button {
+        margin-bottom: 10px;
+    }
+}
