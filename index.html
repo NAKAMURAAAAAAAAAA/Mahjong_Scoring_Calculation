@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点数計算サイト</title>
     <link rel="stylesheet" href="styles.css">
+  <meta name="google-site-verification" content="vlBIt133sMPcoZVoVB8Xi4OImcoNz7AFLZogsv5naMk" />
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <div class="result">
+                <span class="score">親: 0 点</span>
+                <span class="score">子: 0 点</span>
+            </div>
             <div class="score-info">
                 <span class="points">20 符</span>
                 <span class="multiplier">0 翻</span>
                 <button class="clear">クリア</button>
-            </div>
-            <div class="result">
-                <span class="score">親: 0 点</span>
-                <span class="score">子: 0 点</span>
             </div>
         </div>
         <div class="tabs">
@@ -57,12 +58,18 @@
                     <button class="two-han" data-han="2">三槓子</button>
                     <button class="two-han" data-han="2">小三元</button>
                     <button class="two-han" data-han="2">混老頭</button>
+                    <button class="two-han" data-han="2">ドラ2</button> <!-- ドラ2追加 -->
                 </div>
                 <h2>3翻役</h2>
                 <div class="yaku-list">
                     <button class="three-han" data-han="3">二盃口</button>
                     <button class="three-han" data-han="3">純全帯公九</button>
                     <button class="three-han" data-han="3">混一色</button>
+                    <button class="three-han" data-han="3">ドラ3</button> <!-- ドラ3追加 -->
+                </div>
+                <h2>4翻役</h2>
+                <div class="yaku-list">
+                    <button class="four-han" data-han="4">ドラ4</button> <!-- ドラ4追加 -->
                 </div>
                 <h2>6翻役</h2>
                 <div class="yaku-list">
@@ -150,6 +157,7 @@
             </div>
         </div>
     </div>
+      <div id="fireworks" class="fireworks-container"></div> <!-- 花火アニメーション用の要素 -->
     <script src="scripts.js"></script>
 </body>
 </html>
