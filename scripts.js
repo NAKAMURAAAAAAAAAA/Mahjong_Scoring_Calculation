@@ -7,29 +7,111 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.tab');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
+    const fireworksContainer = document.createElement('div');
+    fireworksContainer.id = 'fireworksContainer';
+    fireworksContainer.className = 'fireworks-container';
+    document.body.appendChild(fireworksContainer);
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'fireworksCanvas';
+    canvas.className = 'fireworks-canvas';
+    fireworksContainer.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const fireworks = [];
+
     const scoreTable = {
         'parent': {
             20: [0, 0, 2000, 3900, 7700],
             25: [0, 0, 2400, 4800, 9600],
             30: [0, 1500, 2900, 5800, 11600],
-            40: [0, 2000, 3900, 7700, 16000],
-            50: [0, 2400, 4800, 9600, 16000],
-            60: [0, 2900, 5800, 11600, 16000],
-            70: [0, 3400, 6800, 13200, 16000]
+            40: [0, 2000, 3900, 7700, 12000],
+            50: [0, 2400, 4800, 9600, 12000],
+            60: [0, 2900, 5800, 11600, 12000],
+            70: [0, 3400, 6800, 12000, 12000]
         },
         'child': {
             20: [0, 0, 1300, 2600, 5200],
             25: [0, 0, 1600, 3200, 6400],
             30: [0, 1000, 2000, 3900, 7700],
-            40: [0, 1300, 2600, 5200, 16000],
-            50: [0, 1600, 3200, 6400, 16000],
-            60: [0, 2000, 3900, 7700, 16000],
-            70: [0, 2300, 4500, 9000, 16000]
+            40: [0, 1300, 2600, 5200, 8000],
+            50: [0, 1600, 3200, 6400, 8000],
+            60: [0, 2000, 3900, 7700, 8000],
+            70: [0, 2300, 4500, 12000, 8000]
         }
     };
 
-    const roundUpFu = (fu) => {
-        return Math.ceil(fu / 10) * 10;
+    class Firework {
+        constructor(x, y, colors) {
+            this.x = x;
+            this.y = y;
+            this.colors = colors;
+            this.particles = this.createParticles();
+        }
+
+        createParticles() {
+            const particles = [];
+            for (let i = 0; i < 100; i++) {
+                const angle = Math.random() * 2 * Math.PI;
+                const speed = Math.random() * 3 + 2;
+                particles.push({
+                    x: this.x,
+                    y: this.y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    color: this.colors[Math.floor(Math.random() * this.colors.length)]
+                });
+            }
+            return particles;
+        }
+
+        update() {
+            this.particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.02;
+            });
+            this.particles = this.particles.filter(p => p.alpha > 0);
+        }
+
+        draw(ctx) {
+            this.particles.forEach(p => {
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.strokeStyle = p.color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p.x - p.vx * 10, p.y - p.vy * 10);
+                ctx.stroke();
+                ctx.restore();
+            });
+        }
+    }
+
+    const showFireworks = () => {
+        const colors = ['#FF0000', '#FF4500', '#FFD700'];
+        fireworks.push(new Firework(Math.random() * canvas.width, Math.random() * canvas.height, colors));
+        fireworks.push(new Firework(Math.random() * canvas.width, Math.random() * canvas.height, colors));
+        fireworks.push(new Firework(Math.random() * canvas.width, Math.random() * canvas.height, colors));
+        animateFireworks();
+    };
+
+    const animateFireworks = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        fireworks.forEach(firework => {
+            firework.update();
+            firework.draw(ctx);
+        });
+        if (fireworks.some(fw => fw.particles.length > 0)) {
+            requestAnimationFrame(animateFireworks);
+        } else {
+            fireworksContainer.style.display = 'none';
+        }
     };
 
     const calculateScore = () => {
@@ -74,6 +156,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         scoreElementParent.textContent = `親: ${scoreParent} 点`;
         scoreElementChild.textContent = `子: ${scoreChild} 点`;
+
+        if (scoreParent >= 12000 || scoreChild >= 8000) {
+            fireworksContainer.style.display = 'block';
+            showFireworks();
+        }
+    };
+
+    const roundUpFu = (fu) => {
+        return Math.ceil(fu / 10) * 10;
     };
 
     const toggleHan = (button, han) => {
@@ -128,6 +219,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const threeHanButtons = document.querySelectorAll('.three-han');
     threeHanButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            toggleHan(button, parseInt(button.dataset.han));
+        });
+    });
+
+    const fourHanButtons = document.querySelectorAll('.four-han');
+    fourHanButtons.forEach(button => {
         button.addEventListener('click', function() {
             toggleHan(button, parseInt(button.dataset.han));
         });
